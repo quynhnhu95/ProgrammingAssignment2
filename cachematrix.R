@@ -6,18 +6,19 @@
 ## First initialize the two objects x and n1, where x is the argument to be passed when testing in makeCacheMatrix for the matrix and n1 will be used later in the function for the matrix inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
-
-j<-NULL
-set<-function(y){
-  x<<-y
-  j<<-NULL
-}
- get<-function()x
-   setInverse<-function(inverse)j<<-inverse
-   etInverse<-function()j
-   list(set=set,get=get,
-        setInverse=setInverse,
-        getInverse=getInverse)}
+  
+  j<-NULL 
+  set<-function(y){
+    x<<-y
+    j<<-NULL
+  }
+  get<-function()x
+  setInverse<-function(inverse)j<<-inverse
+  getInverse<-function()j
+  list(set=set,get=get,
+       setInverse=setInverse,
+       getInverse=getInverse)
+  }
 
 
 ## Write a short comment describing this function
@@ -27,12 +28,12 @@ set<-function(y){
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-j<-x$getInverse()
-if(!is.null(j)){
-  message("getting cache data")
-  return(j)
-}
-mat<-x$get()
-j<-sovle(mat,...)
-x$setInverse(j)
-j}
+  j<-x$getInverse()
+  if(!is.null(j)){
+    message("getting cache data")
+    return(j)
+  }
+  mat<-x$get()
+  j<-solve(mat,...)
+  x$setInverse(j)
+  j}
